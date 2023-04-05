@@ -14,10 +14,7 @@ public class Television implements Comparable<Television>{
         if (make == null || model == null || make.isEmpty() || model.isEmpty() || screenSize < 32 || resolution < 720) {
             throw new IllegalArgumentException("Bad constructor arguments");
         }
-        if (resolution == 2160)
-            fourK = true;
-        else
-            fourK = false;
+        this.fourK = (resolution == 2160);
         this.make = make;
         this.model = model;
         this.resolution = resolution;
@@ -71,7 +68,7 @@ public class Television implements Comparable<Television>{
     @Override
     public int compareTo(final Television another) {
         if (another == null)
-            throw new IllegalArgumentException("bad compareTo param");
+            throw new IllegalArgumentException("null parameter in the compareTo method");
         int makeCompare = make.compareTo(another.make);
         if (makeCompare == 0) {
             int modelCompare = model.compareTo(another.model);
